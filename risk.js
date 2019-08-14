@@ -1,17 +1,17 @@
 (function() {
 
-	var attackerLoses2 = 'attacker loses 2',
-		bothLose1 = 'attacker loses 1, defender loses 1',
-		defenderLoses2 = 'defender loses 2';
+	var attackerWins2 = 'attacker wins 2',
+		bothWin1 = 'attacker wins 1, defender wins 1',
+		defenderWins2 = 'defender wins 2';
 
 	var result = rollAll();
 	displayResult( result );
 
 	function displayResult( result ) {
-		var total = result[attackerLoses2] + result[bothLose1] + result[defenderLoses2];
-		displaySingleResult( attackerLoses2, result[attackerLoses2], total );
-		displaySingleResult( bothLose1, result[bothLose1], total );
-		displaySingleResult( defenderLoses2, result[defenderLoses2], total );
+		var total = result[attackerWins2] + result[bothWin1] + result[defenderWins2];
+		displaySingleResult( attackerWins2, result[attackerWins2], total );
+		displaySingleResult( bothWin1, result[bothWin1], total );
+		displaySingleResult( defenderWins2, result[defenderWins2], total );
 	}
 
 	function displaySingleResult( label, singleResult, total ) {
@@ -22,9 +22,9 @@
 		var a1, a2, a3, d1, d2,
 			singleResult,
 			result = {};
-		result[attackerLoses2] = 0;
-		result[bothLose1] = 0;
-		result[defenderLoses2] = 0;
+		result[attackerWins2] = 0;
+		result[bothWin1] = 0;
+		result[defenderWins2] = 0;
 
 		for ( a1 = 1; a1 <= 6; a1++ ) {
 			for ( a2 = 1; a2 <= 6; a2++ ) {
@@ -45,17 +45,17 @@
 		attacks = attacks.sort().reverse();
 		defends = defends.sort().reverse();
 
-		if (attacks[0] <= defends[0]) {
-				if (attacks[1] <= defends[1]) {
-					return 'attacker loses 2';
+		if (attacks[0] > defends[0]) {
+				if (attacks[1] > defends[1]) {
+					return 'attacker wins 2';
 				} else {
-					return 'attacker loses 1, defender loses 1';
+					return 'attacker wins 1, defender wins 1';
 				}
 		} else {
-				if (attacks[1] <= defends[1]) {
-					return 'attacker loses 1, defender loses 1';
+				if (attacks[1] > defends[1]) {
+					return 'attacker wins 1, defender wins 1';
 				} else {
-					return 'defender loses 2';
+					return 'defender wins 2';
 				}
 		}
 	}
