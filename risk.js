@@ -42,17 +42,17 @@
 
 	function evaluate( attacks, defends ) {
 		// sort highest to lowest
-		attacks = attacks.sort();
-		defends = defends.sort();
+		attacks = attacks.sort().reverse();
+		defends = defends.sort().reverse();
 
-		if (attacks[0] < defends[0]) {
-				if (attacks[1] < defends[1]) {
+		if (attacks[0] <= defends[0]) {
+				if (attacks[1] <= defends[1]) {
 					return 'attacker loses 2';
 				} else {
 					return 'attacker loses 1, defender loses 1';
 				}
 		} else {
-				if (attacks[1] < defends[1]) {
+				if (attacks[1] <= defends[1]) {
 					return 'attacker loses 1, defender loses 1';
 				} else {
 					return 'defender loses 2';
